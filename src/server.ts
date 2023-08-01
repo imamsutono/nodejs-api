@@ -4,7 +4,15 @@ import * as morgan from 'morgan'
 
 const app = express()
 
+const customLogger = (message) => (req, res, next) => {
+  console.log(`message: ${message}`)
+  next()
+}
+
 app.use(morgan('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(customLogger)
 
 app.get('/', (req, res) => {
   console.log('hello from express')
