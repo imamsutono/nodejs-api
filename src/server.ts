@@ -1,18 +1,13 @@
 import * as express from 'express'
 import router from './router'
 import * as morgan from 'morgan'
+import { protect } from './modules/auth'
 
 const app = express()
-
-const customLogger = (message) => (req, res, next) => {
-  console.log(`message: ${message}`)
-  next()
-}
 
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(customLogger)
 
 app.get('/', (req, res) => {
   console.log('hello from express')
@@ -21,6 +16,6 @@ app.get('/', (req, res) => {
   res.json({ message: 'hello' })
 })
 
-app.use('/api', router)
+app.use('/api', protect, router)
 
 export default app
