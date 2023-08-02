@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+import * as bcrypt from 'bcrypt'
 
 export const comparePassword = (password, hash) => {
   return bcrypt.compare(password, hash)

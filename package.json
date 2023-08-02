@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.0.0",
+    "@types/bcrypt": "^5.0.0",
     "@types/morgan": "^1.9.4",
     "acorn": "^8.10.0",
     "acorn-walk": "^8.2.0",
